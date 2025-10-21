@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro - ReciclaTech</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="register-page">
+      <div class="register-card">
+        <h2>Crie sua Conta ReciclaTech</h2>
+        <form action="/cadastrar" method="POST">
+          <div class="profile-selection">
+            <label class="radio-option">
+              <input type="radio" name="perfil" value="doador" required />
+              Sou Doador (Quero Reciclar)
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="perfil" value="adquirente" required />
+              Sou Adquirente (Quero Comprar)
+            </label>
+          </div>
+
+          <div class="form-group">
+            <label for="nome">Nome Completo</label>
+            <input type="text" id="nome" name="nome" required />
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="gabriel@email.com"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="senha">Criar Senha</label>
+            <input
+              type="password"
+              id="senha"
+              name="senha"
+              placeholder="********"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="confirma_senha">Confirmar Senha</label>
+            <input
+              type="password"
+              id="confirma_senha"
+              name="confirma_senha"
+              placeholder="********"
+              required
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="btn-primary"
+            style="width: 100%; padding: 12px; margin-top: 10px"
+          >
+            Cadastrar
+          </button>
+        </form>
+
+        <span class="login-link">
+          Já tem conta? <a href="escolha_login.html">Faça Login</a>
+        </span>
+      </div>
+    </div>
+  </body>
+</html>
