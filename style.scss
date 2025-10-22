@@ -124,6 +124,12 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
+
+  @include tablet {
+    flex-direction: column; /* OK: Empilha o logo e o nav */
+    justify-content: center;
+    text-align: center; /* Centraliza a logo */
+  }
 }
 
 // .logo {
@@ -136,13 +142,26 @@ nav ul {
   list-style: none;
   display: flex;
   align-items: center;
+  /* (Estilos de desktop aqui...) */
 
   @include tablet {
-    display: none; // Esconder menu em telas pequenas (usaria um menu hamburger real)
+    display: flex; /* Garante que o menu está visível */
+    flex-direction: row; /* Mantém os itens um ao lado do outro */
+    flex-wrap: wrap; /* Importante: permite que os links quebrem para a próxima linha se não couberem */
+    justify-content: center; /* Centraliza o menu abaixo do logo */
+    width: 100%;
+    margin-top: 15px; /* Adiciona espaço entre o logo e o menu */
+    padding: 0 10px; /* Adiciona padding lateral para evitar que os links colem nas bordas */
   }
 
   li {
     margin-left: 20px;
+
+    @include tablet {
+      /* Ajusta margem para evitar que os links fiquem muito juntos */
+      margin: 5px 10px;
+    }
+
     a {
       text-decoration: none;
       color: $color-text-dark;
@@ -151,11 +170,17 @@ nav ul {
       }
     }
   }
+
   .btn-cadastro {
-    @extend .btn-primary; // Reutiliza estilo do botão principal
+    @extend .btn-primary;
     padding: 8px 15px;
     margin-left: 20px;
     font-size: 0.9rem;
+
+    @include tablet {
+      margin: 10px; /* Garante espaçamento em mobile */
+      width: auto; /* Deixa o botão no tamanho do conteúdo */
+    }
   }
 }
 
@@ -229,9 +254,9 @@ nav ul {
     }
   }
 
-  .stat-item {
+  .stats-item {
     flex: 1;
-    .stat-number {
+    .stats-number {
       display: block;
       font-size: 2.5rem;
       font-weight: bold;
@@ -248,11 +273,11 @@ nav ul {
 // 6. COMO FUNCIONA
 // ===================================
 
-.how-it-works-section {
+.funcionamento-section {
   padding: 60px 0;
   text-align: center;
 
-  .subtitle {
+  .legenda {
     color: $color-text-light;
     margin-bottom: 40px;
   }
@@ -386,11 +411,11 @@ nav ul {
 // 8. DEPOIMENTOS
 // ===================================
 
-.testimonials-section {
+.testemunhos-section {
   padding: 60px 0;
   text-align: center;
 
-  .testimonial-list {
+  .testemunho-list {
     display: flex;
     justify-content: center;
     gap: 20px;
@@ -402,7 +427,7 @@ nav ul {
     }
   }
 
-  .testimonial-card {
+  .testemunho-card {
     background-color: $color-white;
     border: 1px solid #eee;
     border-radius: 8px;
@@ -606,17 +631,17 @@ footer {
 .radio-option input[type="radio"] {
   margin-right: 8px;
   /* Estilo para dar destaque visual ao perfil selecionado */
-  accent-color: #198754;
+  accent-color: $color-primary;
 }
 
 /* Destaque para o perfil doador (verde) */
 .radio-option:has(input[value="doador"]:checked) {
-  color: #198754;
+  color: $color-primary;
 }
 
 /* Destaque para o perfil adquirente (azul) */
 .radio-option:has(input[value="adquirente"]:checked) {
-  color: #007bff;
+  color: $color-secondary;
 }
 
 .login-link {
@@ -627,7 +652,7 @@ footer {
   font-size: 0.9rem;
 }
 .login-link a {
-  color: #198754;
+  color: $color-primary;
   font-weight: bold;
 }
 
@@ -657,7 +682,7 @@ footer {
   font-family: "Poppins", sans-serif !important;
   font-size: 1.75rem;
   margin-bottom: 30px;
-  color: #007bff; /* Azul Secundário */
+  color: $color-secondary;
 }
 .form-group {
   margin-bottom: 20px;
@@ -678,9 +703,9 @@ footer {
 }
 .btn-adquirente {
   /* Estilo customizado para o botão azul, usando o azul secundário do SASS */
-  background-color: #007bff;
+  background-color: $color-secondary;
   color: $color-background-light;
-  border: 2px solid #007bff;
+  border: 2px solid $color-secondary;
   display: inline-block;
   padding: 12px 20px;
   border-radius: 5px;
@@ -692,8 +717,8 @@ footer {
   margin-top: 10px;
 }
 .btn-adquirente:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
+  background-color: $color-secondary;
+  border-color: $color-secondary;
 }
 .register-link {
   display: block;
@@ -703,7 +728,7 @@ footer {
   font-size: 0.9rem;
 }
 .register-link a {
-  color: #007bff; /* Azul secundário */
+  color: $color-secondary; /* Azul secundário */
   font-weight: bold;
 }
 
@@ -732,7 +757,7 @@ footer {
   font-family: "Poppins", sans-serif !important;
   font-size: 1.75rem;
   margin-bottom: 30px;
-  color: #198754; /* Verde primário */
+  color: $color-primary;
 }
 .form-group {
   margin-bottom: 20px;
@@ -759,7 +784,7 @@ footer {
   font-size: 0.9rem;
 }
 .register-link a {
-  color: #198754;
+  color: $color-primary;
   font-weight: bold;
 }
 
@@ -798,11 +823,11 @@ footer {
 /* Estilos do SASS para os botões */
 .btn-doador {
   /* Verde: Cor principal do Doador */
-  background-color: #198754;
-  border-color: #198754;
+  background-color: $color-primary;
+  border-color: $color-primary;
 }
 .btn-adquirente {
   /* Azul: Cor principal do Adquirente */
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: $color-secondary;
+  border-color: $color-secondary;
 }
